@@ -1,286 +1,239 @@
 /* =====================================
    AGNES MEMORIAL MEDICAL HOSPITAL
-   LOGIN PAGE CSS
+   PATIENT LOGIN + REGISTER CSS
 ===================================== */
 
-
 *{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
 }
-
-
 
 body{
-
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(
-135deg,
-#075985,
-#0ea5e9
-);
-
+  min-height:100vh;
+  padding:15px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(125,211,252,.35),transparent 40%),
+    radial-gradient(circle at 85% 80%,rgba(255,255,255,.18),transparent 35%),
+    linear-gradient(135deg,#064e6e,#0284c7 60%,#38bdf8);
 }
 
+/* ===== PATIENT CARD (used by login + register pages) ===== */
 
-
-/* LOGIN CONTAINER */
-
-
-.login-container{
-
-width:100%;
-display:flex;
-justify-content:center;
-align-items:center;
-
+.patient-card{
+  background:white;
+  width:100%;
+  max-width:380px;
+  padding:40px 30px;
+  border-radius:20px;
+  border-top:6px solid #0ea5e9;
+  box-shadow:0 25px 60px rgba(0,0,0,.3);
+  animation:slide .8s ease;
+  text-align:center;
 }
 
-
-
-
-/* LOGIN BOX */
-
-
-.login-box{
-
-background:white;
-width:380px;
-padding:40px;
-border-radius:20px;
-box-shadow:0 15px 40px rgba(0,0,0,.2);
-animation:slide .8s ease;
-
+.patient-card h1{
+  color:#075985;
+  font-size:24px;
+  margin-bottom:8px;
 }
 
+.patient-card h2{
+  color:#777;
+  font-size:16px;
+  font-weight:normal;
+  margin-bottom:25px;
+}
 
+.patient-card h1:only-of-type{
+  margin-bottom:25px;
+}
 
+.patient-card input{
+  width:100%;
+  padding:13px 14px;
+  margin-bottom:18px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  background:#f8fafc;
+  font-size:16px;
+  outline:none;
+  transition:.3s;
+}
 
+.patient-card input:focus{
+  border-color:#0ea5e9;
+  background:white;
+  box-shadow:0 0 0 3px rgba(14,165,233,.2);
+}
+
+.patient-card p{
+  margin-top:18px;
+  color:#555;
+  font-size:15px;
+}
+
+.patient-card p a{
+  color:#0284c7;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+.patient-card p a:hover{
+  text-decoration:underline;
+}
 
 @keyframes slide{
-
-
-from{
-
-opacity:0;
-transform:translateY(-50px);
-
+  from{
+    opacity:0;
+    transform:translateY(-50px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-
-to{
-
-opacity:1;
-transform:translateY(0);
-
-}
-
-
-}
-
-
-
-
-
-
-
-/* LOGO */
-
-
-.hospital-logo{
-
-text-align:center;
-margin-bottom:30px;
-
-}
-
-
-
-.hospital-logo i{
-
-font-size:60px;
-color:#075985;
-
-}
-
-
-
-.hospital-logo h2{
-
-color:#075985;
-margin-top:10px;
-
-}
-
-
-
-.hospital-logo p{
-
-color:#777;
-
-}
-
-
-
-
-
-
-
-/* INPUTS */
-
-
-.input-box{
-
-display:flex;
-align-items:center;
-border:1px solid #ddd;
-border-radius:10px;
-padding:12px;
-margin-bottom:20px;
-
-}
-
-
-
-.input-box i{
-
-color:#075985;
-margin-right:10px;
-
-}
-
-
-
-.input-box input{
-
-border:none;
-outline:none;
-width:100%;
-font-size:16px;
-
-}
-
-
-
-
-
-
-/* ROLE SELECT */
-
-
-select{
-
-width:100%;
-padding:13px;
-border-radius:10px;
-border:1px solid #ddd;
-margin-bottom:20px;
-font-size:15px;
-outline:none;
-
-}
-
-
-
-
-
-
-
-/* LOGIN BUTTON */
-
+/* ===== BUTTON ===== */
 
 button{
-
-
-width:100%;
-padding:14px;
-border:none;
-border-radius:25px;
-background:#075985;
-color:white;
-font-size:17px;
-cursor:pointer;
-transition:.3s;
-
-
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:25px;
+  background:linear-gradient(90deg,#075985,#0284c7);
+  color:white;
+  font-size:17px;
+  cursor:pointer;
+  transition:.3s;
+  box-shadow:0 8px 18px rgba(2,132,199,.35);
 }
-
-
 
 button:hover{
-
-
-background:#0ea5e9;
-transform:translateY(-3px);
-
-
+  background:linear-gradient(90deg,#0284c7,#0ea5e9);
+  transform:translateY(-3px);
 }
 
-
-
-
-
-
-/* MESSAGE */
-
+/* ===== MESSAGE (success / error text) ===== */
 
 #message{
-
-text-align:center;
-margin-top:15px;
-font-weight:bold;
-
+  text-align:center;
+  margin-top:15px;
+  font-weight:bold;
 }
 
+/* ===== ORIGINAL LOGIN-BOX STYLES (kept in case other pages use them) ===== */
 
-
-
-
-
-
-/* MOBILE */
-
-
-@media(max-width:450px){
-
+.login-container{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 
 .login-box{
-
-width:90%;
-padding:30px;
-
+  background:white;
+  width:100%;
+  max-width:380px;
+  padding:40px;
+  border-radius:20px;
+  border-top:6px solid #0ea5e9;
+  box-shadow:0 25px 60px rgba(0,0,0,.3);
+  animation:slide .8s ease;
 }
 
-
+.hospital-logo{
+  text-align:center;
+  margin-bottom:30px;
 }
 
-/* ===== MOBILE FIT ===== */
-body{height:auto;min-height:100vh;padding:15px}
-.login-box{width:100%;max-width:380px}
-select,.input-box input{font-size:16px}
-@media(max-width:450px){
-.login-box{width:100%;padding:25px 20px}
-.hospital-logo i{font-size:48px}
+.hospital-logo i{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:#e0f2fe;
+  font-size:44px;
+  color:#075985;
 }
 
+.hospital-logo h2{
+  color:#075985;
+  margin-top:10px;
+  font-size:24px;
+}
 
-/* ===== DECORATION ===== */
-body{background:radial-gradient(circle at 15% 20%,rgba(125,211,252,.35),transparent 40%),radial-gradient(circle at 85% 80%,rgba(255,255,255,.18),transparent 35%),linear-gradient(135deg,#064e6e,#0284c7 60%,#38bdf8)}
-.login-box{border-top:6px solid #0ea5e9;box-shadow:0 25px 60px rgba(0,0,0,.3)}
-.hospital-logo i{display:inline-flex;align-items:center;justify-content:center;width:90px;height:90px;border-radius:50%;background:#e0f2fe;font-size:44px}
-.hospital-logo h2{font-size:24px}
-.input-box{background:#f8fafc;transition:.3s}
-.input-box:focus-within{border-color:#0ea5e9;background:white;box-shadow:0 0 0 3px rgba(14,165,233,.2)}
-select{background:#f8fafc}
-select:focus{border-color:#0ea5e9;box-shadow:0 0 0 3px rgba(14,165,233,.2)}
-button{background:linear-gradient(90deg,#075985,#0284c7);box-shadow:0 8px 18px rgba(2,132,199,.35)}
-button:hover{background:linear-gradient(90deg,#0284c7,#0ea5e9)}
-p button{background:none;color:#0284c7;box-shadow:none;width:auto;padding:0 4px;font-size:15px;font-weight:bold;text-decoration:underline}
-p button:hover{background:none;transform:none;color:#075985}
+.hospital-logo p{
+  color:#777;
+}
+
+.input-box{
+  display:flex;
+  align-items:center;
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:12px;
+  margin-bottom:20px;
+  background:#f8fafc;
+  transition:.3s;
+}
+
+.input-box:focus-within{
+  border-color:#0ea5e9;
+  background:white;
+  box-shadow:0 0 0 3px rgba(14,165,233,.2);
+}
+
+.input-box i{
+  color:#075985;
+  margin-right:10px;
+}
+
+.input-box input{
+  border:none;
+  outline:none;
+  width:100%;
+  font-size:16px;
+  background:transparent;
+}
+
+select{
+  width:100%;
+  padding:13px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  margin-bottom:20px;
+  font-size:16px;
+  outline:none;
+  background:#f8fafc;
+}
+
+select:focus{
+  border-color:#0ea5e9;
+  box-shadow:0 0 0 3px rgba(14,165,233,.2);
+}
+
+p button{
+  background:none;
+  color:#0284c7;
+  box-shadow:none;
+  width:auto;
+  padding:0 4px;
+  font-size:15px;
+  font-weight:bold;
+  text-decoration:underline;
+}
+
+p button:hover{
+  background:none;
+  transform:none;
+  color:#075985;
+}
+
+/* ===== MOBILE ===== */
