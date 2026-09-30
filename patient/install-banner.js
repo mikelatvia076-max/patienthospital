@@ -1,17 +1,18 @@
 // Agnes Memorial Hospital: "Install app" banner + "internet required" lock screen.
-// Use on any page:
-//   <script src="/install-banner.js" defer data-app-key="ammh" data-app-name="Agnes Memorial Hospital" data-sw="/sw.js"></script>
+// Keep this file in the same folder as index.html, manifest.json, sw.js and the icons.
 (function () {
   if (window.__agnesInstallBanner) return;
   window.__agnesInstallBanner = true;
 
   var me = document.currentScript || document.querySelector('script[src*="install-banner"]');
   var d = (me && me.dataset) || {};
+  var BASE = (me && me.src) || location.href;                       // every file is found next to this script
+  var url = function (f) { return new URL(f, BASE).href; };
   var KEY = "installDismissed:" + (d.appKey || "app");
   var NAME = d.appName || document.title;
-  var SW = d.sw || "/sw.js";
-  var ICON = d.icon || "/icons/icon-192.png";
-  var PING = d.ping || "/manifest.webmanifest";
+  var SW = url(d.sw || "sw.js");
+  var ICON = url("icon-192.png");
+  var PING = url("manifest.json");
   var DAYS = 7;
 
   if ("serviceWorker" in navigator) {
@@ -83,7 +84,6 @@
 
     window.addEventListener("beforeinstallprompt", function (e) { e.preventDefault(); deferred = e; showBar(); });
     window.addEventListener("appinstalled", hideBar);
-    window.addEventListener("resize", function () { if (!bar.hidden) document.documentElement.style.setProperty("--banner-h", bar.offsetHeight + "px"); });
 
     go.onclick = async function () {
       if (!deferred) {   // this browser gave no one-tap install, so explain the manual way

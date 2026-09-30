@@ -1,6 +1,6 @@
 // Agnes Memorial Hospital Center - service worker (lets the app install)
-const CACHE = "ammh-v1";
-const SHELL = ["/", "/index.html", "/agnes.css", "/steve.js", "/install-banner.js", "/manifest.webmanifest", "/icons/icon-192.png", "/icons/icon-512.png"];
+const CACHE = "ammh-v2";
+const SHELL = ["./", "index.html", "agnes.css", "steve.js", "install-banner.js", "manifest.json", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", (e) => {
   // add files one by one so a missing file never blocks the install
@@ -34,7 +34,7 @@ self.addEventListener("fetch", (e) => {
       })
       .catch(() =>
         caches.match(req).then((hit) =>
-          hit || (req.mode === "navigate" ? caches.match("/index.html") : Response.error())
+          hit || (req.mode === "navigate" ? caches.match("index.html") : Response.error())
         )
       )
   );
