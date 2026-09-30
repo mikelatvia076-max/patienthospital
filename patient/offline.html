@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#081822">
+<title>You're offline – Agnes Memorial Hospital</title>
+<link rel="icon" href="/icons/favicon-32.png">
+<style>
+  /* fully self-contained: no external fonts/scripts so it works with zero internet */
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    font-family:"Nunito Sans","Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+    color:#fff;text-align:center;
+    background:radial-gradient(circle at 50% 30%,#0d3a4c 0%,#081822 65%,#050f16 100%);
+    display:flex;align-items:center;justify-content:center;
+    padding:max(16px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom));
+    min-height:100vh;min-height:100dvh;
+  }
+  .card{
+    width:100%;max-width:440px;padding:32px 24px 28px;border-radius:28px;
+    background:rgba(8,24,34,.7);border:1px solid rgba(255,255,255,.2);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.7);
+    animation:glow 4s infinite alternate;
+  }
+  @keyframes glow{
+    0%{box-shadow:0 0 0 1px #00f7ff,0 0 28px rgba(0,247,255,.35),0 30px 60px -20px rgba(0,0,0,.7)}
+    50%{box-shadow:0 0 0 1px #ff00ff,0 0 28px rgba(255,0,255,.3),0 30px 60px -20px rgba(0,0,0,.7)}
+    100%{box-shadow:0 0 0 1px #00ff66,0 0 28px rgba(0,255,102,.3),0 30px 60px -20px rgba(0,0,0,.7)}
+  }
+  .logo{width:96px;height:96px;border-radius:50%;background:#fff;border:3px solid #f0b94a;
+        box-shadow:0 0 22px rgba(240,185,74,.55);display:block;margin:0 auto 14px}
+  h1{margin:0 0 6px;font-family:Georgia,"Times New Roman",serif;font-size:1.55rem;
+     background:linear-gradient(90deg,#00f5ff,#00ff88,#ffff00,#ff00ff,#00f5ff);background-size:400%;
+     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+     animation:shine 5s linear infinite}
+  @keyframes shine{0%{background-position:0}50%{background-position:100%}100%{background-position:0}}
+  p{margin:8px 0;color:rgba(255,255,255,.85);line-height:1.5}
+  .flat{display:block;width:100%;max-width:300px;height:46px;margin:14px auto}
+  .flat path{fill:none;stroke:#ff7a6b;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;
+             filter:drop-shadow(0 0 6px rgba(255,122,107,.8))}
+  .flat .dead{stroke:#5b7481;filter:none;stroke-dasharray:6 8}
+  .tips{list-style:none;padding:0;margin:14px 0 4px;text-align:left;font-size:.92rem;
+        background:rgba(255,255,255,.08);border-radius:16px;padding:12px 16px}
+  .tips li{padding:5px 0 5px 26px;position:relative;color:rgba(255,255,255,.88)}
+  .tips li::before{content:"";position:absolute;left:0;top:11px;width:12px;height:12px;border-radius:50%;
+                   background:linear-gradient(90deg,#00b4d8,#00c96b)}
+  button{
+    margin-top:18px;font:inherit;font-weight:800;font-size:1.05rem;color:#fff;cursor:pointer;border:0;
+    padding:13px 34px;border-radius:999px;
+    background:linear-gradient(90deg,#00b4d8,#00c96b,#00b4d8);background-size:200% 100%;
+    box-shadow:0 0 22px rgba(0,220,200,.55),inset 0 1px 0 rgba(255,255,255,.4);
+    animation:flow 4s linear infinite;transition:transform .2s;
+  }
+  @keyframes flow{0%{background-position:0 50%}100%{background-position:200% 50%}}
+  button:hover{transform:translateY(-2px) scale(1.04)}
+  button:active{transform:scale(.97)}
+  button:focus-visible{outline:3px solid #f0b94a;outline-offset:4px}
+  button[disabled]{opacity:.7;cursor:progress}
+  #status{min-height:1.3em;margin-top:12px;font-size:.9rem;color:#ffd58a}
+  .emg{margin-top:14px;font-size:.82rem;color:rgba(255,255,255,.65)}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+  <main class="card" role="main">
+    <!-- inline logo (same look as the app icon) -->
+    <svg class="logo" viewBox="0 0 96 96" role="img" aria-label="Agnes Memorial Hospital logo">
+      <defs>
+        <linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#00b4d8"/><stop offset="1" stop-color="#00c96b"/></linearGradient>
+      </defs>
+      <circle cx="48" cy="48" r="48" fill="#fff"/>
+      <rect x="37" y="16" width="22" height="64" rx="6" fill="url(#g)"/>
+      <rect x="16" y="37" width="64" height="22" rx="6" fill="url(#g)"/>
+      <path d="M10 48H36L41 30L50 66L57 40L61 48H86" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M10 48H36L41 30L50 66L57 40L61 48H86" fill="none" stroke="#ff6a5a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <h1>You're offline</h1>
+    <p>Agnes Memorial Hospital Center can't reach the internet right now.</p>
+
+    <svg class="flat" viewBox="0 0 360 46" aria-hidden="true">
+      <path d="M0 23H120L136 6L154 40L168 16L178 23H200"/>
+      <path class="dead" d="M200 23H360"/>
+    </svg>
+
+    <ul class="tips">
+      <li>Check that Wi-Fi or mobile data is turned on</li>
+      <li>Move to a place with better network signal</li>
+      <li>Then tap “Try again” &ndash; we'll reconnect you</li>
+    </ul>
+
+    <button id="retry" type="button">Try again</button>
+    <div id="status" role="status" aria-live="polite"></div>
+    <p class="emg">In an emergency, don't wait &ndash; call your local emergency number or go to the nearest hospital.</p>
+  </main>
+
+<script>
+(function () {
+  var btn = document.getElementById('retry');
+  var status = document.getElementById('status');
+  var checking = false;
+
+  function check() {
+    if (checking) return;
+    checking = true;
+    btn.disabled = true;
+    status.textContent = 'Checking connection…';
+    // small request that always goes to the network
+    fetch('/manifest.webmanifest?ping=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('bad');
+        status.textContent = 'Back online! Loading…';
+        location.reload();
+      })
+      .catch(function () {
+        status.textContent = 'Still offline. Please try again in a moment.';
+        btn.disabled = false;
+        checking = false;
+      });
+  }
+
+  btn.addEventListener('click', check);
+  window.addEventListener('online', check);   // reconnect automatically
+})();
+</script>
+</body>
+</html>

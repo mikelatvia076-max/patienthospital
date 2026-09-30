@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Document</title>
+    <title>Agnes Memorial Hospital Center</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <link href="agnes.css" rel="stylesheet">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#081822">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Agnes Hospital">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="/install-banner.js" defer data-app-key="ammh" data-app-name="Agnes Memorial Hospital" data-sw="/sw.js"></script>
 </head>
 <body>
    <section id="loginpage">
@@ -65,7 +75,8 @@
          function fit() {
             panel.style.transform = '';
             var vv = window.visualViewport;
-            var h = (vv ? vv.height : window.innerHeight) - 24;
+            var bh = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--banner-h')) || 0;
+            var h = (vv ? vv.height : window.innerHeight) - 24 - bh;
             var w = (vv ? vv.width : window.innerWidth) - 24;
             var s = Math.min(1, h / panel.offsetHeight, w / panel.offsetWidth);
             if (s < 1) panel.style.transform = 'scale(' + s + ')';
