@@ -2,31 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <link href="agnes.css" rel="stylesheet">
 </head>
 <body>
    <section id="loginpage">
-   <h1 class="shine-title">WELCOME TO AGNES MEMORIAL HOSPITAL CENTER</h1>
-   <img src="kasa.png" id="kasa" width="150px" height="100px">
-   <br><br>
-   <h1>our mission:</h1>
-   <p>patient centered health care service</p>
-   <br>
-   <br><br>
-   <h2>Our motto</h2>
-   <p>we listen,we care</p>
-   <br><br>
-<a href="../hosi/hospital-login.html" class="portal-button">go to hospital portal</a>
-   <br><br>
-<a href="../patient/patient-login.html" class="portal-button">go to patient portal</a>
-  </section>
-   
-            </body>
+      <div class="floaters" aria-hidden="true">
+         <span><i class="fa-solid fa-plus"></i></span>
+         <span><i class="fa-solid fa-heart-pulse"></i></span>
+         <span><i class="fa-solid fa-stethoscope"></i></span>
+         <span><i class="fa-solid fa-plus"></i></span>
+         <span><i class="fa-solid fa-pills"></i></span>
+         <span><i class="fa-solid fa-heart"></i></span>
+         <span><i class="fa-solid fa-plus"></i></span>
+      </div>
+
+      <div class="panel">
+         <img src="kasa.png" id="kasa" alt="Agnes Memorial Hospital Center logo">
+         <h1 class="shine-title">WELCOME TO AGNES MEMORIAL HOSPITAL CENTER</h1>
+
+         <svg class="pulse" viewBox="0 0 360 60" aria-hidden="true">
+            <path d="M0 32 H110 L128 32 L142 8 L162 54 L178 20 L190 32 H360" />
+         </svg>
+
+         <div class="info">
+            <div class="info-card">
+               <i class="fa-solid fa-hand-holding-heart"></i>
+               <div>
+                  <h2>Our mission</h2>
+                  <p>patient centered health care service</p>
+               </div>
+            </div>
+            <div class="info-card">
+               <i class="fa-solid fa-heart"></i>
+               <div>
+                  <h2>Our motto</h2>
+                  <p>we listen, we care</p>
+               </div>
+            </div>
+         </div>
+
+         <a href="../patient/patient-login.html" class="portal-button">
+            <i class="fa-solid fa-hospital-user"></i>
+            Go to patient portal
+            <i class="fa-solid fa-arrow-right arrow"></i>
+         </a>
+      </div>
+   </section>
 
    <script src="steve.js"></script>
+   <script>
+      // Safety net: if a screen is still too small (big text size, tiny window, zoom),
+      // shrink the panel just enough to fit. The page never scrolls.
+      (function () {
+         var panel = document.querySelector('.panel');
+         function fit() {
+            panel.style.transform = '';
+            var vv = window.visualViewport;
+            var h = (vv ? vv.height : window.innerHeight) - 24;
+            var w = (vv ? vv.width : window.innerWidth) - 24;
+            var s = Math.min(1, h / panel.offsetHeight, w / panel.offsetWidth);
+            if (s < 1) panel.style.transform = 'scale(' + s + ')';
+         }
+         window.addEventListener('load', fit);
+         window.addEventListener('resize', fit);
+         window.addEventListener('orientationchange', fit);
+         if (window.visualViewport) window.visualViewport.addEventListener('resize', fit);
+         if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+         fit();
+      })();
+   </script>
 </body>
 </html>
